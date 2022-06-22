@@ -13,6 +13,6 @@ namespace testWork.Data.Domain
         public Guid IncidentId { get; set; }
         public String Desciption { get; set; }
 
-        public IEnumerable<Account> Accounts { get; set; }
+        public List<Account> Accounts { get; set; }
     }
 }

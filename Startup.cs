@@ -12,7 +12,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using testWork.Abstractions;
 using testWork.Data;
+using testWork.Data.Domain;
+using testWork.Repositries;
 
 namespace testWork
 {
@@ -27,10 +30,15 @@ namespace testWork
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddControllers();
 
             services.AddDbContext<DataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("ConString")));
+
+            services.AddScoped<IRepositry<Account>, AccountRepositry>();
+            services.AddScoped<IRepositry<Incident>, IncidentRepositry>();
+            services.AddScoped<IRepositry<Contact>, ContactRepositry>();
 
             services.AddSwaggerGen(c =>
             {

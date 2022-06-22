@@ -11,7 +11,8 @@ namespace testWork.Data.Configuration
             builder.HasKey(k => k.IncidentId);
             builder.Property(k => k.IncidentId).ValueGeneratedOnAdd();
 
-            builder.HasMany(c => c.Accounts).WithOne(a => a.Incident);
+            builder.HasMany(c => c.Accounts).WithOne(a => a.Incident).OnDelete(DeleteBehavior.SetNull);
+            
         }
     }
 }

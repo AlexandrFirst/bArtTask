@@ -20,6 +20,7 @@ namespace testWork.Data
         {
             modelBuilder.ApplyConfiguration(new AccountConfiguration());
             modelBuilder.ApplyConfiguration(new IncidentConfiguration());
+            modelBuilder.ApplyConfiguration(new ContactConfiguration());
         }
     }
 }

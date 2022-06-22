@@ -21,6 +21,10 @@ namespace testWork
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                })
+                .ConfigureLogging((hostingContext, loggingBuilder) =>
+                {
+                    loggingBuilder.AddFile("Logs/testapp-{Date}.txt");
                 });
     }
 }

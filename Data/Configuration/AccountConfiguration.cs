@@ -12,7 +12,8 @@ namespace testWork.Data.Configuration
             builder.HasKey(k => k.AccountId);
             builder.Property(k => k.AccountId).ValueGeneratedOnAdd();
 
-            builder.HasMany(c => c.Contacts).WithOne(a => a.Account);
+            builder.HasMany(c => c.Contacts).WithOne(a => a.Account).OnDelete(DeleteBehavior.SetNull);
+            builder.HasIndex(n => n.Name).IsUnique();
         }
     }
 }
