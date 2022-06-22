@@ -73,10 +73,9 @@ namespace testWork.Controllers
             else
             {
                 mapper.Map<CreateContactDto, Contact>(newContactDto, contact);
-                if(contact.Account == null)
-                    contact.Account = account;
+                contact.Account = account;
                 await contactRepositry.Update(contact);
-            } 
+            }
 
             Incident incident = new Incident() { Desciption = incidentDto.IncidentDescription };
             incident.Accounts.Add(account);
